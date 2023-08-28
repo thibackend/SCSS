@@ -1,0 +1,69 @@
+@use '../globals/util/' as u;
+
+// %widget {
+//     padding: u.rem(16);
+// }
+
+.grid {
+
+    // .grid__main{  
+
+    // }
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 40px;
+    // max-width: 1000px;
+    // margin-left:auto;
+    // margin-right:auto;
+    // margin: 0 auto;
+    margin-inline: auto;
+    width: min(100% - u.rem(40), u.rem(1000));
+
+    @include u.breakpoint(large) {
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: auto;
+    }
+
+    // nếu mà màn hình là 900px thì sẽ ra giao diện này 2fr 1fr;
+    &__main,
+    &__sidebar {
+        padding: 40px;
+    }
+
+    &__main {
+        background-color: rgb(36, 36, 197);
+
+        @include u.breakpoint(medium) {
+            background-color: rgba(5, 87, 12, 0.532);
+        }
+
+        @include u.breakpoint(large) {
+            background-color: hsl(39, 100%, 35%);
+        }
+    }
+
+    &__sidebar {
+        @include u.breakpoint-down(medium) {
+            text-align: center;
+        }
+    }
+
+    &__widget {
+        padding: u.rem(16);
+
+        &.magenta {
+            // @extend %widget;
+            background-color: rgba(199, 14, 110, 0.768);
+        }
+
+        &.green {
+            // @extend &__widget;
+            // @extend %widget;
+            background-color: hsl(120, 100%, 27%);
+        }
+    }
+
+
+}

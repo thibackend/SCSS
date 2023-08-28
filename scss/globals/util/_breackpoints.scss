@@ -1,0 +1,36 @@
+@use './function' as f;
+// 700px, 900px, 1440px
+// $breackpoint-up: (
+//     // từ px chuyển sang em thì lấy sô px chia cho 16;
+//     "medium":f.em(700),
+//     "large":f.em(900),
+//     "xlarge":f.em(1440),
+// );
+$breackpoint-up: (
+    // từ px chuyển sang em thì lấy sô px chia cho 16;
+    "medium":700px,
+    "large":900px,
+    "xlarge":1440px,
+);
+
+// 699.98px, 899.98px, 1439.98px 
+
+
+$breackpoint-down: (
+    'small':f.em(699.98),
+    'medium':f.em(899.98),
+    // 56.25em,
+    'large': f.em(1439.98)
+);
+
+@mixin breakpoint($size) {
+    @media(min-width:map-get($breackpoint-up, $size)) {
+        @content;
+    }
+}
+
+@mixin breakpoint-down ($size) {
+    @media (max-width: map-get($breackpoint-down, $size)) {
+        @content;
+    }
+}
